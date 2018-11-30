@@ -1,5 +1,7 @@
 #include "ofApp.h"
 
+#define START_BUTTON_POSITION 0.75
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(ofColor::white);
@@ -24,7 +26,7 @@ void ofApp::setup(){
     
     // スタートページ
     startPage = true;
-    startPageBackImage.load("startPage/dglotoback.png");
+    startPageBackImage.load("startPage/background.png");
     
     // スタートボタンが丸の場合
     //		startButtonCenterPoint.set(ofGetWidth()/2., ofGetHeight()*0.8);
@@ -32,8 +34,7 @@ void ofApp::setup(){
     
     // スタートボタンが四角の場合
     startButtonImage.load("startPage/start.png");
-    startButtonRectangle.setFromCenter(ofGetWidth()/2., ofGetHeight()*0.8, startButtonImage.getWidth(), startButtonImage.getHeight());
-    
+    startButtonRectangle.setFromCenter(ofGetWidth()/2.0, ofGetHeight() * START_BUTTON_POSITION, ofGetWidth()/2.0, startButtonImage.getHeight() * ofGetWidth()/2.0 / startButtonImage.getWidth());
     // スタートページに戻るボタン
     backToStartPageButtonSize.set(28, 28);
     backToStartPageButton.setFromCenter(backToStartPageButtonSize.x/2., backToStartPageButtonSize.y/2., backToStartPageButtonSize.x, backToStartPageButtonSize.y);
@@ -107,7 +108,7 @@ void ofApp::keyReleased(int key){
         case 'f':
             ofToggleFullscreen();
             // 座標更新
-            startButtonRectangle.setFromCenter(ofGetWidth()/2., ofGetHeight()*0.8, startButtonImage.getWidth(), startButtonImage.getHeight());
+            startButtonRectangle.setFromCenter(ofGetWidth()/2.0, ofGetHeight() * START_BUTTON_POSITION, ofGetWidth()/2.0, startButtonImage.getHeight() * ofGetWidth()/2.0 / startButtonImage.getWidth());
             backToStartPageButton.setFromCenter(backToStartPageButtonSize.x/2., backToStartPageButtonSize.y/2., backToStartPageButtonSize.x, backToStartPageButtonSize.y);
             break;
         default:
