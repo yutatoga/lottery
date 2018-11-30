@@ -3,4 +3,4 @@
 - XCode: Version 7.3 (7D175)
 - openFrameworks: of_v0.9.3_osx_release
 
-![lottery](https://farm2.staticflickr.com/1708/25915068104_bfffeacc83_o_d.gif)
+![lottery](https://raw.githubusercontent.com/yutatoga/lottery/master/lottery.gif)
