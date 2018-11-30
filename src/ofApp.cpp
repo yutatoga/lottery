@@ -1,8 +1,8 @@
 #include "ofApp.h"
 
 #define START_BUTTON_POSITION 0.75
-#define GIFT_NUMBER 3
-#define FRAME_RATE 2
+#define GIFT_NUMBER 10
+#define FRAME_RATE 24
 
 //--------------------------------------------------------------
 void ofApp::setup(){
