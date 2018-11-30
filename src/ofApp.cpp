@@ -74,11 +74,8 @@ void ofApp::draw(){
         // fit image to screen
         float screenRatio = ofGetWidth() / (float)ofGetHeight();
         float imageRatio = lotteryImageVector[currentImageIndex].getWidth() / (float)lotteryImageVector[currentImageIndex].getHeight();
+
         float imageScale;
-        
-        ofLogNotice("screenRatio" + ofToString(screenRatio));
-        ofLogNotice("imageRatio" + ofToString(imageRatio));
-        
         if(imageRatio < screenRatio){
             // set image height to same as screen height
             imageScale = lotteryImageVector[currentImageIndex].getHeight() / (float)ofGetHeight();
