@@ -13,9 +13,6 @@ void ofApp::setup(){
         LotteryImage lotteryImage;
         lotteryImage.load("presents/"+ofToString(i)+".jpg");
         //				// ジャンル分け(1等, 2等, 3等など)
-        //				// 0 - kakaku.com
-        //				// 1 - payment
-        //				// 2 - dg
         //				if (i>=0 && i<=3) {
         //						lotteryImage.setKindId(0);
         //				}
