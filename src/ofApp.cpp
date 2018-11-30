@@ -1,14 +1,14 @@
 #include "ofApp.h"
 
 #define START_BUTTON_POSITION 0.75
+#define GIFT_NUMBER 250
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(ofColor::white);
     ofEnableAlphaBlending();
     ofSetFrameRate(24);
-    giftsNumber = 250;
-    for (int i =0; i<giftsNumber; i++) {
+    for (int i =0; i < GIFT_NUMBER; i++) {
         LotteryImage lotteryImage;
         lotteryImage.load("presents/"+ofToString(i)+".jpg");
         //				// ジャンル分け(1等, 2等, 3等など)
