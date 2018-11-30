@@ -1,13 +1,14 @@
 #include "ofApp.h"
 
 #define START_BUTTON_POSITION 0.75
-#define GIFT_NUMBER 250
+#define GIFT_NUMBER 3
+#define FRAME_RATE 2
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(ofColor::white);
     ofEnableAlphaBlending();
-    ofSetFrameRate(24);
+    ofSetFrameRate(FRAME_RATE);
     for (int i =0; i < GIFT_NUMBER; i++) {
         LotteryImage lotteryImage;
         lotteryImage.load("presents/"+ofToString(i)+".jpg");
@@ -45,7 +46,6 @@ void ofApp::update(){
     if(!pause){
         currentImageIndex = rand()%(int)lotteryImageVector.size();
     }
-    ofLogNotice(ofToString(currentImageIndex));
 }
 
 //--------------------------------------------------------------
@@ -73,8 +73,27 @@ void ofApp::draw(){
         ofPushStyle();
         ofTranslate(ofGetWidth()/2., ofGetHeight()/2.);
         ofSetRectMode(OF_RECTMODE_CENTER);
-        ofLogNotice("currentImageIndex:"+ofToString(currentImageIndex));
-        lotteryImageVector[currentImageIndex].draw(0, 0, lotteryImageVector[currentImageIndex].getWidth(), lotteryImageVector[currentImageIndex].getHeight());
+        
+        // fit image to screen
+        float screenRatio = ofGetWidth() / (float)ofGetHeight();
+        float imageRatio = lotteryImageVector[currentImageIndex].getWidth() / (float)lotteryImageVector[currentImageIndex].getHeight();
+        float imageScale;
+        
+        ofLogNotice("screenRatio" + ofToString(screenRatio));
+        ofLogNotice("imageRatio" + ofToString(imageRatio));
+        
+        if(imageRatio < screenRatio){
+            // set image height to same as screen height
+            imageScale = lotteryImageVector[currentImageIndex].getHeight() / (float)ofGetHeight();
+        }else{
+            // set image width to same as screen width
+            imageScale = lotteryImageVector[currentImageIndex].getWidth() / (float)ofGetWidth();
+        }
+        lotteryImageVector[currentImageIndex].draw(
+                                                   0, 0,
+                                                   lotteryImageVector[currentImageIndex].getWidth() / imageScale,
+                                                   lotteryImageVector[currentImageIndex].getHeight() / imageScale
+                                                   );
         ofPopStyle();
         ofPopMatrix();
         
@@ -154,17 +173,12 @@ void ofApp::mousePressed(int x, int y, int button){
                 startPage = true;
             }
         }else{
+            ofLogNotice(ofToString(currentImageIndex));
             // 停止
-            
             // 音
             player.load("sounds/result.wav");
             player.setLoop(false);
             player.play();
-            
-            
-            ofLogNotice(ofToString(currentImageIndex));
-            
-            
             pause = true;
         }
     }
