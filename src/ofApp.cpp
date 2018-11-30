@@ -156,7 +156,7 @@ void ofApp::mousePressed(int x, int y, int button){
             // 停止
             
             // 音
-            player.load("sounds/joi.wav");
+            player.load("sounds/result.wav");
             player.setLoop(false);
             player.play();
             
